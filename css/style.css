@@ -2,6 +2,11 @@ nav, header, main, footer {
     grid-column: 1 / -1;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .dm-sans-h1 {
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
@@ -202,7 +207,9 @@ nav {
 
 
 .card-image-wrapper {
-  width: 280px !important;
+  width: 100%;
+  max-width: 1200px; /* limits width on desktop */
+  box-sizing: border-box;
   height: 180px !important;             /* Fixed height for ALL project cards */
   background-color: #f4f4f6; /* Neutral light grey background */
   border-radius: 8px;
