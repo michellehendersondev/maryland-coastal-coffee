@@ -33,8 +33,7 @@ h1,h2 {
 }
 
 header {
-    background-color:aquamarine;
-    grid-column: 1 / span 4;
+    /*grid-column: 1 / span 4;*/
     height: 50%;
 }
 
@@ -43,19 +42,27 @@ body{
 }
 
 main {
-    display:flex;/*give the parent container a flex layout to center children*/
+    /*display:flex;/*give the parent container a flex layout to center children
     justify-content:center;
     align-items: flex-start;
     background-color:white;
-    grid-column: 1/span 4;
+    /*grid-column: 1/span 4;
     min-height: fit-content;
-    margin-bottom:0;
+    margin-bottom:0;*/
+    display: flex;
+    flex-direction: column; /* Stacks children neatly from top to bottom */
+    align-items: center;    /* Centers your content blocks nicely */
+    background-color: white;
+    grid-column: 1 / -1;
+    min-height: fit-content;
+    margin-bottom: 0;
+    padding-bottom: 40px;
 }
 
 footer {
     background-color:#aae0f1;  
     min-height: 100px;
-    grid-column:1/span 4;
+    /*grid-column:1/span 4;*/
     color:#54adcb;
     text-align:center;
     font-size: small;
@@ -102,11 +109,17 @@ h4 {
 .hero {
     display:grid;
     grid-template-columns:repeat(10, 1fr);
-    grid-template-rows:400px;/*1fr*/
+    grid-template-rows:minmax(550px, auto);
     width:100%;
-    height:400px;
+    min-height:550px;
     position:relative;
     overflow:hidden;
+
+    background-image: url('../image/sea.jpg'); 
+    background-size: cover;       
+    background-position: center center;  /* Centers the best part of the photo */
+    background-repeat: no-repeat;
+
 }
 
 .hero img {
@@ -141,7 +154,7 @@ li a:hover {
 }
 
 nav {
-   grid-column: 1/span 4;
+   /*grid-column: 1/span 4;*/
 }
 
 .dropdown {
@@ -329,7 +342,11 @@ margin-left:30px;
     color:black;
 }
 
-#aimage{padding-left:30px;
+#aimage{/*padding-left:30px;*/
+   width: 80%;             /* Scales nicely on mobile and desktop */
+    max-width: 500px;       /* Keeps it from getting monstrously huge */
+    padding-left: 0;        /* Removes old side-padding */
+    margin: 20px auto;      /* Centers the image horizontally */ 
 }
 
 hr {
@@ -338,4 +355,34 @@ hr {
   height: 0;
   border: none;
   border-top: 2px solid #aae0f1;
+}
+
+
+@media (min-width: 768px) {
+    .hero {
+        grid-template-rows: minmax(300px, auto);
+        min-height: 300px;
+        overflow: hidden; /* Safely clips background image on big screens */
+    }
+
+    .hero-img {
+        max-width: 400px;
+        width:100%;
+    }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.gallery-item {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px; 
 }
